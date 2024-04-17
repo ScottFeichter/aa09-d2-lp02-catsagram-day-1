@@ -1,0 +1,7 @@
+body { background-color: azure };
+
+header {
+    border: 1px black solid;
+    box-shadow: 5px 5px 5px grey;
+    text-align: center;
+}
