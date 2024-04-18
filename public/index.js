@@ -30,12 +30,30 @@ const createHeader = (content) => {
 
 // ==================  catContainer ========================
 
-const createCatContainer = (img) => {
+const createCatContainer = () => {
   const catContainer = document.createElement("div");
   catContainer.setAttribute("id", "catContainer");
-  // catContainer.appendChild(img);
+
+
+
+
   return catContainer;
 };
+
+// fetchCatImage = () => {
+//   const catURL =  fetch(
+//     "https://api.thecatapi.com/v1/images/search"
+//   ).then((res) => res.body[0]);
+
+//   return catURL;
+// };
+
+// createCatImage = () => {
+//   const catImage = document.createElement("img");
+
+//   const catObj = fetchCatImage();
+
+// }
 
 // ==================  controlsContainer ========================
 
@@ -58,6 +76,8 @@ const createNewCatButton = () => {
 
   const newCatButton = document.createElement("button");
   newCatButton.setAttribute("id", "newCatButton");
+  // newCatButton.setAttribute("type", "submit");
+  // newCatButton.setAttribute("action", "make call")
   newCatButton.innerText = "new kitten";
 
   newCatButtonContainer.appendChild(newCatButton);
@@ -81,6 +101,4 @@ const createVoteButtons = (yes, no) => {
   return voteButtonsContainer;
 };
 
-const createCommentsBox = () => {
-
-}
+const createCommentsBox = () => {};
