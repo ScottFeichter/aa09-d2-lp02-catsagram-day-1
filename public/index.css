@@ -1,7 +1,79 @@
-body { background-color: azure };
+body {
+    background-color: azure
+}
+
+/* ==================== header ================= */
 
 header {
-    border: 1px black solid;
+    /* border: 1px black solid; */
+
+    text-align: left;
+    margin: 0;
+    padding: 0;
+}
+
+h1 {
+    font-size: 20rem;
+    margin: 0;
+}
+
+/* ==================== catContainer ================= */
+
+#catContainer {
+    /* border: 2px green dashed; */
+    height: 400px;
+}
+
+img {
     box-shadow: 5px 5px 5px grey;
+}
+
+/* ==================== controlsContainer ================= */
+
+
+#controlsContainer {
+    /* border: 4px pink dashed; */
+}
+
+
+#newCatButtonContainer{
+    /* border: 4px blue solid; */
     text-align: center;
+    margin: 2rem 0 2rem 0;
+}
+
+#newCatButton {
+    font-size: 4rem;
+    padding: 2rem;
+    background-color: rgb(227, 223, 255);
+    color: rgb(59, 10, 237);
+    box-shadow: 5px 5px 5px grey;
+}
+
+#voteButtonsContainer {
+    /* border: 4px blue solid; */
+    text-align: center;
+    margin: 2rem 0 2rem 0;
+}
+
+.voteButton {
+    margin: 0 5rem 0 5rem;
+    font-size: 4rem;
+    padding: 2rem;
+    background-color: slateblue;
+    color: white;
+    box-shadow: 5px 5px 5px grey;
+}
+
+#newCatButton:hover, .voteButton:hover {
+    background-color: darkblue;
+    color: pink;
+    cursor: pointer;
+}
+
+#newCatButton:active, .voteButton:active {
+    background-color: white;
+    color: black;
+    border: 2px white solid;
+    box-shadow: none;
 }
