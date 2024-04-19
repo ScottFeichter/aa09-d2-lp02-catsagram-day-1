@@ -34,26 +34,39 @@ const createCatContainer = () => {
   const catContainer = document.createElement("div");
   catContainer.setAttribute("id", "catContainer");
 
+  const catImage = createCatImage();
 
-
-
+  catContainer.appendChild(catImage);
   return catContainer;
 };
 
-// fetchCatImage = () => {
-//   const catURL =  fetch(
-//     "https://api.thecatapi.com/v1/images/search"
-//   ).then((res) => res.body[0]);
+createCatImage = () => {
+  const catImage = document.createElement("img");
+  catImage.src = fetchCatImageSrc();
+  console.log("catImage.src: ", catImage.src);
+  
+  catImage.style.margin = "20px";
+  catImage.style.maxWidth = "750px";
 
-//   return catURL;
-// };
+  return catImage;
+};
 
-// createCatImage = () => {
-//   const catImage = document.createElement("img");
+fetchCatImageSrc = async () => {
+  try {
+    const kittenResponse = await fetch(
+      "https://api.thecatapi.com/v1/images/search?size=small"
+    );
+    const kittenData = await kittenResponse.json();
+    console.log("kittenData: ", kittenData);
+    const kittenDataSrc = kittenData[0].url;
+    console.log("kittenDataSrc: ", kittenDataSrc);
+    return kittenDataSrc;
+  } catch (e) {
+    console.log("Failed to fetch image", e);
+  }
 
-//   const catObj = fetchCatImage();
-
-// }
+  return "there is a problem";
+};
 
 // ==================  controlsContainer ========================
 
@@ -76,8 +89,6 @@ const createNewCatButton = () => {
 
   const newCatButton = document.createElement("button");
   newCatButton.setAttribute("id", "newCatButton");
-  // newCatButton.setAttribute("type", "submit");
-  // newCatButton.setAttribute("action", "make call")
   newCatButton.innerText = "new kitten";
 
   newCatButtonContainer.appendChild(newCatButton);

@@ -20,7 +20,7 @@ h1 {
 /* ==================== catContainer ================= */
 
 #catContainer {
-    /* border: 2px green dashed; */
+    border: 2px green dashed;
     height: 400px;
 }
 

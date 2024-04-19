@@ -45,11 +45,7 @@ const server = http.createServer((req, res) => {
         res.statusCode = 200;
 
         if (ext === ".jpg" || ext === ".jpeg") {
-          res.statusCode = 200;
           res.setHeader("Content-Type", "image/jpeg");
-          const resBody = fetch("https://api.thecatapi.com/v1/images/search");
-          
-          res.end(resBody)
 
         } else if (ext === ".css") {
           res.setHeader("Content-Type", "text/css");
