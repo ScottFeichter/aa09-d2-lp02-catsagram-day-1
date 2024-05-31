@@ -46,7 +46,6 @@ createCatImage = async () => {
   catImage.src = await getCatImageSrc();
   // console.log("catImage.src: ", catImage.src);
 
-
   console.log(`RAN: createCatImage()`);
   return catImage;
 };
@@ -64,12 +63,12 @@ getCatImageSrc = async () => {
 
     console.log(`RAN: getCatImageSrc() - try`);
     return kittenDataSrc;
-
   } catch (e) {
-    console.log("RAN: getCatImageSrc() - catch: Failed to fetch image. Error details: ", e);
+    console.log(
+      "RAN: getCatImageSrc() - catch: Failed to fetch image. Error details: ",
+      e
+    );
   }
-
-
 };
 
 // ==================  controlsContainer ========================
@@ -95,6 +94,17 @@ const createNewCatButton = () => {
   const newCatButton = document.createElement("button");
   newCatButton.setAttribute("id", "newCatButton");
   newCatButton.innerText = "new kitty";
+
+  newCatButton.addEventListener("click", async (e) => {
+
+    let oldCatContainer = document.getElementById("catContainer");
+    // document.body.removeChild(oldCatContainer);
+
+    let newCatContainer = await createCatContainer();
+      newCatContainer.setAttribute("id", "catContainer");
+      console.log("children", document.body.children);
+      document.body.replaceChild(newCatContainer, oldCatContainer);
+  });
 
   newCatButtonContainer.appendChild(newCatButton);
   return newCatButtonContainer;
