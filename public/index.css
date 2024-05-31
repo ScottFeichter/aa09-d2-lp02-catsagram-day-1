@@ -56,7 +56,10 @@ img {
 
 #voteButtonsContainer {
     /* border: 4px blue solid; */
+    display: flex;
     text-align: center;
+    align-items: center;
+    justify-content: center;
     margin: 2rem 0 2rem 0;
 }
 
@@ -80,4 +83,22 @@ img {
     color: black;
     border: 2px white solid;
     box-shadow: none;
+}
+
+
+#scoresContainer  {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    margin: 0;
+}
+
+#purrrScoreContainer, #hisssScoreContainer {
+    width: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    margin: 0 auto 0 auto;
+    color: slateblue;
+    font-size: 40px;
 }

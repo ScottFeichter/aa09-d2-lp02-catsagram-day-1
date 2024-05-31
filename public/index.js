@@ -1,4 +1,7 @@
 console.log(`CONNECTION TEST`);
+let HISSS = 0;
+let PURRR = 0;
+
 
 // ==================  DOM Content Loaded ========================
 
@@ -8,10 +11,12 @@ document.addEventListener(`DOMContentLoaded`, async () => {
   const header = createHeader("kitties!");
   const catContainer = await createCatContainer();
   const controlsContainer = createControlsContainer();
+  const scoresContainer = createScoresContainer();
 
   body.appendChild(header);
   body.appendChild(catContainer);
   body.appendChild(controlsContainer);
+  body.appendChild(scoresContainer);
 
   console.log("DOMContentLoaded");
 });
@@ -77,9 +82,6 @@ const createControlsContainer = () => {
   const controlsContainer = document.createElement("div");
   controlsContainer.setAttribute("id", "controlsContainer");
 
-  const newCatButtonContainer = createNewCatButton();
-  controlsContainer.appendChild(newCatButtonContainer);
-
   const voteButtonsContainer = createVoteButtons(`purrr`, `hisss`);
   controlsContainer.appendChild(voteButtonsContainer);
 
@@ -95,15 +97,18 @@ const createNewCatButton = () => {
   newCatButton.setAttribute("id", "newCatButton");
   newCatButton.innerText = "new kitty";
 
-  newCatButton.addEventListener("click", async (e) => {
-
+  newCatButton.addEventListener("click", async function newKittyHandler(e) {
     let oldCatContainer = document.getElementById("catContainer");
-    // document.body.removeChild(oldCatContainer);
-
     let newCatContainer = await createCatContainer();
-      newCatContainer.setAttribute("id", "catContainer");
-      console.log("children", document.body.children);
-      document.body.replaceChild(newCatContainer, oldCatContainer);
+    newCatContainer.setAttribute("id", "catContainer");
+    document.body.replaceChild(newCatContainer, oldCatContainer);
+    PURRR = 0;
+    let purrrScore = document.getElementById("purrrScore");
+    purrrScore.innerHTML = PURRR;
+    HISSS = 0;
+    let hisssScore = document.getElementById("hisssScore");
+    hisssScore.innerHTML = HISSS;
+    console.log(`RAN: newKittyHandler()`);
   });
 
   newCatButtonContainer.appendChild(newCatButton);
@@ -117,14 +122,71 @@ const createVoteButtons = (yes, no) => {
   const purrr = document.createElement("button");
   purrr.setAttribute("class", "voteButton");
   purrr.innerText = yes;
+  purrr.addEventListener("click", handlePurrr);
+  voteButtonsContainer.appendChild(purrr);
+
+  const newCatButtonContainer = createNewCatButton();
+  voteButtonsContainer.appendChild(newCatButtonContainer);
 
   const hisss = document.createElement("button");
   hisss.setAttribute("class", "voteButton");
   hisss.innerText = no;
-
-  voteButtonsContainer.appendChild(purrr);
+  hisss.addEventListener("click", handleHisss);
   voteButtonsContainer.appendChild(hisss);
+
+
+
+
   return voteButtonsContainer;
 };
 
-const createCommentsBox = () => {};
+// ==================  scoresContainer ========================
+const createScoresContainer = () => {
+  const scoresContainer = document.createElement("div");
+  scoresContainer.setAttribute("id", "scoresContainer");
+
+  let purrrScoreContainer = document.createElement("div");
+  purrrScoreContainer.setAttribute("id", "purrrScoreContainer");
+  let purrrScoreText = document.createElement("p");
+  purrrScoreText.innerText = "purrrs: ";
+  let purrrScore = document.createElement("p");
+  purrrScore.setAttribute("id", "purrrScore");
+  purrrScore.innerText = PURRR;
+
+  purrrScoreContainer.appendChild(purrrScoreText);
+  purrrScoreContainer.appendChild(purrrScore);
+  scoresContainer.appendChild(purrrScoreContainer);
+
+  let hisssScoreContainer = document.createElement("div");
+  hisssScoreContainer.setAttribute("id", "hisssScoreContainer");
+  let hisssScoreText = document.createElement("p");
+  hisssScoreText.innerText = "hissses: ";
+  let hisssScore = document.createElement("p");
+  hisssScore.setAttribute("id", "hisssScore");
+  hisssScore.innerText = HISSS;
+
+  hisssScoreContainer.appendChild(hisssScoreText);
+  hisssScoreContainer.appendChild(hisssScore);
+  scoresContainer.appendChild(hisssScoreContainer);
+
+  console.log("RAN: createScoresContainer");
+  return scoresContainer;
+};
+
+
+const handlePurrr = () => {
+  PURRR++
+  let purrrScore = document.getElementById("purrrScore");
+  purrrScore.innerHTML = PURRR;
+};
+
+const handleHisss = () => {
+  HISSS++
+  let hisssScore = document.getElementById("hisssScore");
+  hisssScore.innerHTML = HISSS;
+};
+
+// ================== commentsContainer ========================
+
+
+const createCommentsContainer = () => {};
