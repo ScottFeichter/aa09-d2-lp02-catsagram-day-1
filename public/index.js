@@ -2,7 +2,6 @@ console.log(`CONNECTION TEST`);
 let HISSS = 0;
 let PURRR = 0;
 
-
 // ==================  DOM Content Loaded ========================
 
 document.addEventListener(`DOMContentLoaded`, async () => {
@@ -12,11 +11,13 @@ document.addEventListener(`DOMContentLoaded`, async () => {
   const catContainer = await createCatContainer();
   const controlsContainer = createControlsContainer();
   const scoresContainer = createScoresContainer();
+  const commentsContainer = createCommentsContainer();
 
   body.appendChild(header);
   body.appendChild(catContainer);
   body.appendChild(controlsContainer);
   body.appendChild(scoresContainer);
+  body.appendChild(commentsContainer);
 
   console.log("DOMContentLoaded");
 });
@@ -134,9 +135,6 @@ const createVoteButtons = (yes, no) => {
   hisss.addEventListener("click", handleHisss);
   voteButtonsContainer.appendChild(hisss);
 
-
-
-
   return voteButtonsContainer;
 };
 
@@ -173,20 +171,52 @@ const createScoresContainer = () => {
   return scoresContainer;
 };
 
-
 const handlePurrr = () => {
-  PURRR++
+  PURRR++;
   let purrrScore = document.getElementById("purrrScore");
   purrrScore.innerHTML = PURRR;
 };
 
 const handleHisss = () => {
-  HISSS++
+  HISSS++;
   let hisssScore = document.getElementById("hisssScore");
   hisssScore.innerHTML = HISSS;
 };
 
 // ================== commentsContainer ========================
 
+const createCommentsContainer = () => {
+  const commentsText = document.createElement("p");
+  commentsText.setAttribute("id", "commentsText");
+  commentsText.innerHTML = "Comment:";
 
-const createCommentsContainer = () => {};
+  const commentsInput = document.createElement("textarea");
+  commentsInput.setAttribute("id", "commentsInput");
+  commentsInput.setAttribute("name", "commentsInput");
+  commentsInput.setAttribute("rows", "1");
+  commentsInput.setAttribute("placeholder", "Add a comment...");
+
+  const commentsButton = document.createElement("button");
+  commentsButton.setAttribute("id", "commentsButton");
+  commentsButton.setAttribute("name", "commentsButton");
+  commentsButton.setAttribute("type", "submit");
+  commentsButton.setAttribute("value", "submit");
+  commentsButton.innerHTML = "Submit";
+
+  const commentsControlsContainer = document.createElement("div");
+  commentsControlsContainer.setAttribute("id", "commentsControlsContainer");
+  commentsControlsContainer.appendChild(commentsText);
+  commentsControlsContainer.appendChild(commentsInput);
+  commentsControlsContainer.appendChild(commentsButton);
+
+  const commentsBox = document.createElement("div");
+  commentsBox.setAttribute("id", "commentsBox");
+
+  const commentsContainer = document.createElement("div");
+  commentsContainer.setAttribute("id", "commentsContainer");
+  commentsContainer.appendChild(commentsControlsContainer);
+  commentsContainer.appendChild(commentsBox);
+
+  console.log("RAN: createCommentsContainer()");
+  return commentsContainer;
+};

@@ -102,3 +102,38 @@ img {
     color: slateblue;
     font-size: 40px;
 }
+
+/* ========= commentsContainer ==========*/
+
+#commentsControlsContainer{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#commentsText{
+    margin: 1rem;
+    font-size: 20px;
+}
+#commentsInput{
+    margin: 1rem;
+    height: 20px;
+}
+
+#commentsButton{
+    width: 100px;
+    height: 25px;
+    margin: 1rem;
+}
+
+#commentsBox{
+    border: 1px blue solid;
+    background-color: aliceblue;
+    height: 600px;
+    width: 1000px;
+    margin: auto;
+}
+
+#commentsContainer{
+    /* border: red solid 1px; */
+    margin: auto;
+}
