@@ -7,7 +7,7 @@ body {
 header {
     /* border: 1px black solid; */
 
-    text-align: left;
+    text-align: center;
     margin: 0;
     padding: 0;
 }
@@ -20,12 +20,15 @@ h1 {
 /* ==================== catContainer ================= */
 
 #catContainer {
-    border: 2px green dashed;
-    height: 400px;
+    height: 500px;
+    align-content: center;
+    text-align: center;
 }
 
 img {
     box-shadow: 5px 5px 5px grey;
+    /* width: 500px; */
+    height: 500px;
 }
 
 /* ==================== controlsContainer ================= */
@@ -33,6 +36,7 @@ img {
 
 #controlsContainer {
     /* border: 4px pink dashed; */
+    margin: 5rem 0 0 0;
 }
 
 
@@ -47,7 +51,7 @@ img {
     padding: 2rem;
     background-color: rgb(227, 223, 255);
     color: rgb(59, 10, 237);
-    box-shadow: 5px 5px 5px grey;
+    /* box-shadow: 5px 5px 5px grey; */
 }
 
 #voteButtonsContainer {
@@ -62,7 +66,7 @@ img {
     padding: 2rem;
     background-color: slateblue;
     color: white;
-    box-shadow: 5px 5px 5px grey;
+    /* box-shadow: 5px 5px 5px grey; */
 }
 
 #newCatButton:hover, .voteButton:hover {
